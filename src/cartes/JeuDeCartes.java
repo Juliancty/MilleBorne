@@ -31,9 +31,9 @@ public class JeuDeCartes {
 		}
 		Carte[] cartes = new Carte[nbCartes];
 		int index = 0;
-		for(Configuration c : typesDeCartes) {
-			for(int i = 0; i < c.nbExemplaires; i++) {
-				cartes[index] = c.getCarte();
+		for(Configuration configuration : typesDeCartes) {
+			for(int i = 0; i < configuration.nbExemplaires; i++) {
+				cartes[index] = configuration.getCarte();
 				index++;
 			}
 		}
