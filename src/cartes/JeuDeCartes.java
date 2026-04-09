@@ -1,5 +1,9 @@
 package cartes;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class JeuDeCartes {
 	
 	private Configuration[] typesDeCartes = {
@@ -14,7 +18,6 @@ public class JeuDeCartes {
 		new Configuration(new Parade(Type.CREVAISON), 6),
 		new Configuration(new Parade(Type.ACCIDENT), 6),
 		new Configuration(new Attaque(Type.FEU), 5),
-		new Configuration(new FinLimite(), 4),
 		new Configuration(new Attaque(Type.ESSENCE), 3),
 		new Configuration(new Attaque(Type.CREVAISON), 3),
 		new Configuration(new Attaque(Type.ACCIDENT), 3),
@@ -38,6 +41,27 @@ public class JeuDeCartes {
 			}
 		}
 		return cartes;
+	}
+	
+	public boolean checkCount() {
+	    Carte[] tableauPaquet = donnerCartes();
+	    List<Carte> paquet = new ArrayList<>();
+	    Collections.addAll(paquet, tableauPaquet); 
+	    
+	    for (Configuration config : typesDeCartes) {
+	        int compteur = 0;
+	        
+	        for (Carte carteDuPaquet : paquet) {
+	            if (carteDuPaquet.equals(config.getCarte())) {
+	                compteur++;
+	            }
+	        }
+	        
+	        if (compteur != config.getNbExemplaires()) {
+	            return false;
+	        }
+	    }
+	    return true; 
 	}
 
 	public String affichageJeuDeCartes(){

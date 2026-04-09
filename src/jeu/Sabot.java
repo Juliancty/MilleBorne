@@ -38,8 +38,6 @@ public class Sabot implements Iterable<Carte>{
 		return carte;
 	}
 	
-	// Demander si "iterator" doit etre private, car il ne peut y avoir qu'un seul itérateur
-	// et il sert de pioche
 	@Override
 	public Iterator<Carte> iterator() {
 		return new Iterateur();
@@ -48,7 +46,7 @@ public class Sabot implements Iterable<Carte>{
 	private class Iterateur implements Iterator<Carte>{
 		private int indiceIterateur = 0;
 		private boolean nextEffectue = false;
-		private int nbOperationReference = 0;
+		private int nbOperationReference = nbOperations;
 		
 		@Override
 		public boolean hasNext() {

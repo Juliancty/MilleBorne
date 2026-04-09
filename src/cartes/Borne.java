@@ -7,6 +7,11 @@ public class Borne extends Carte {
 	public Borne(int km) {
 		this.km = km;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+			return super.equals(obj) && km == ((Borne)obj).km;
+	}
 
 	@Override
 	public String toString() {
